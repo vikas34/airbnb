@@ -1,8 +1,13 @@
 <% layout("/layout/boilerplate")%> <br /><br />
 <div class="row">
   <div class="col-8 offset-2">
-    <h3 style="color: rgb(237, 155, 2);">Edit Your Listing</h3>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+    <h3 style="color: rgb(237, 155, 2)">Edit Your Listing</h3>
+    <form
+      method="POST"
+      action="/listings/<%= listing._id %>?_method=PUT "
+      novalidate
+      class="needs-validation"
+    >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -10,14 +15,19 @@
           value="<%= listing.title %>"
           type="text"
           class="form-control"
+          required
         />
+          <div class="invalid-feedback"> Can't be Changed</div>
       </div>
+
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea name="listing[description]" class="form-control">
-       <%= listing.description %></textarea
+        <textarea name="listing[description]" class="form-control" required>
+       <%= listing.description %> </textarea
         >
+        <div class="invalid-feedback"> Can't be blank</div>
       </div>
+
       <div class="mb-3">
         <label for="image" class="form-label"> Image Link</label>
         <input
@@ -25,8 +35,11 @@
           value="<%= listing.image %>"
           type="text"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback"> Can't be blank</div>
       </div>
+
       <div class="row">
         <div class="mb-3 col-md-8">
           <label for="price" class="form-label">Price</label>
@@ -35,8 +48,11 @@
             value="<%= listing.price %>"
             type="number"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback"> Can't be blank</div>
         </div>
+
         <div class="mb-3 col-md-4">
           <label for="country" class="form-label">Country</label>
           <input
@@ -44,7 +60,9 @@
             value="<%= listing.country %>"
             type="text"
             class="form-control"
+            required
           />
+          <div class="invalid-feedback"> Can't be blank</div>
         </div>
       </div>
       <div class="mb-3">
@@ -54,10 +72,14 @@
           value="<%= listing.location %>"
           type="text"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback"> Can't be blank</div>
       </div>
+
       <button class="btn btn-dark px-5">Edit</button>
     </form>
   </div>
 </div>
+<script src="/Js/script.js"></script>
 <br /><br />

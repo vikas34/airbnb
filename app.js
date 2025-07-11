@@ -8,6 +8,7 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const PORT = process.env.PORT || 8000;
+const wrapAsync = require("./utils/wrapAsync.js");
 
 main()
   .then((res) => {
@@ -22,10 +23,12 @@ async function main() {
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.engine("ejs", ejsMate);
+
+//middlewares.........
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
-app.engine("ejs", ejsMate);
 
 app.get("/", (req, res) => {
   res.send("Hello World");
@@ -49,12 +52,16 @@ app.get("/listings/:id", async (req, res) => {
 });
 
 // Create Route  by Form
-app.post("/listings", async (req, res) => {
-  // let {title, description, image, price ,country, location} = req.body;
-  let newListing = new Listing(req.body.listing);
-  await newListing.save();
-  res.redirect("/listings");
-});
+app.post(
+  "/listings",
+  wrapAsync(async (req, res, next) => {
+    // let {title, description, image, price ,country, location} = req.body;
+
+    let newListing = new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listings");
+  })
+);
 
 //Edit Route
 app.get("/listings/:id/edit", async (req, res) => {
@@ -91,6 +98,10 @@ app.delete("/listings/:id", async (req, res) => {
 //   res.send("successfully testing")
 //   console.log("Data was successfully saved");
 // });
+
+app.use((err, req, res, next) => {
+  res.send("something went wrong");
+});
 
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);

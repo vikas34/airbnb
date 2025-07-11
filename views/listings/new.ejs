@@ -2,9 +2,9 @@
 <br><br>
 <div class="row ">
   <div class="col-8 offset-2">
-  <h3 style="color: rgb(1, 100, 1);">Create a New Listing</h3>
+  <h3 style="color: rgb(223, 145, 0);">Create a New Listing</h3>
 
-  <form method="POST" action="/listings">
+  <form method="POST" action="/listings" class="needs-validation" novalidate>
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
       <input
@@ -13,7 +13,9 @@
         placeholder="Add a catchy title"
         type="text"
         class="form-control"
+        required
       />
+      <div class="valid-feedback">Title Looks Good !</div>
     </div>
 
     <div class="mb-3">
@@ -23,6 +25,7 @@
         id="description"
         placeholder="Enter description"
         class="form-control"
+        required
       ></textarea>
     </div>
 
@@ -35,6 +38,7 @@
         type="text"
         class="form-control"
       />
+      <div class="invalid-feedback"> Image link should be valid</div>
     </div>
 
     <div class="row">
@@ -47,7 +51,9 @@
         placeholder="Enter price"
         type="number"
         class="form-control"
+        required
       />
+       <div class="invalid-feedback"> Price is invalid</div>
     </div>
 
     <div class="mb-3 col-md-8">
@@ -58,7 +64,9 @@
         placeholder="Enter country"
         type="text"
         class="form-control"
+        required
       />
+         <div class="invalid-feedback">Country is invalid</div>
     </div>
     </div>
 
@@ -70,7 +78,9 @@
         placeholder="Enter location"
         type="text"
         class="form-control"
+        required
       />
+         <div class="invalid-feedback"> Location is invalid</div>
     </div>
 
     <button class="btn btn-dark px-5" type="submit">Add</button>
