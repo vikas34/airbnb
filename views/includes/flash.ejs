@@ -1,0 +1,37 @@
+<% if (success && success.length) { %>
+  <div id="flash-message" class=" col-6 offset-3 alert alert-success alert-dismissible fade show" role="alert">
+    <%= success %>
+
+   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <script>
+    // Hide flash message after 2 seconds (2000ms)
+    setTimeout(() => {
+      const flash = document.getElementById("flash-message");
+      if (flash) {
+        flash.style.display = "none";
+      }
+    }, 2000);
+  </script>
+<% } %>
+
+
+<% if (error && error.length) { %>
+  <div id="flash-msg" class=" col-6 offset-3 alert alert-danger alert-dismissible fade show" role="alert">
+    <%= error %>
+
+   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <script>
+    // Hide flash message after 2 seconds (2000ms)
+    setTimeout(() => {
+      const flash = document.getElementById("flash-msg");
+      if (flash) {
+        flash.style.display = "none";
+      }
+    }, 2000);
+  </script>
+<% } %>
+
