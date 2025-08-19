@@ -1,7 +1,8 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top ">
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="/"
-      ><img src="/logo.png" style="width: 50px; height: 60px"/></a>
+      ><img src="/logo.png" style="width: 50px; height: 60px"
+    /></a>
     <button
       class="navbar-toggler fs-6"
       type="button"
@@ -10,13 +11,22 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-      <div class="navbar-nav  fw-semibold " >
-        <a class="nav-link" href="/">Home</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav fw-semibold">
+        <a class="nav-link" href="/listings">Home</a>
         <a class="nav-link" href="/listings">All Listings</a>
         <a class="nav-link" href="/listings/new"
           ><i class="fa-solid fa-square-plus"></i>Listing</a
         >
+      </div>
+      <div class="navbar-nav fw-semibold ms-auto">
+        <% if(!currUser){%>
+        <a class="nav-link" href="/signup">Signup</a>
+        <a class="nav-link" href="/login">Login</a>
+
+        <% }%> <% if(currUser){%>
+        <a class="nav-link" href="/logout">Logout</a>
+        <% }%>
       </div>
     </div>
   </div>
