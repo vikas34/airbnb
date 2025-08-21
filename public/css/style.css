@@ -2,14 +2,14 @@
   margin: 0;
   padding: 0;
 }
-body{
-   font-family: "Plus Jakarta Sans", sans-serif !important;
-   display: flex;
-   flex-direction: column;
-   min-height: 100vh;
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
-.container{
-  flex:1
+.container {
+  flex: 1;
 }
 .navbar {
   height: 5rem;
@@ -19,42 +19,43 @@ body{
 }
 .nav-link {
   color: #525252 !important;
-  
 }
-.navbar-nav{
+.navbar-nav {
   font-size: 1.1rem !important;
-} 
+}
 
 /*Card*/
 
-.card{
+.card {
   border: none !important;
   margin-bottom: 2rem;
-  
 }
-.card-img-top{
+.card-img-top {
   border-radius: 1rem !important;
   width: 100% !important;
   object-fit: cover !important;
 }
-.card-body{
+.card-body {
   padding: 0 !important;
 }
-.card-text p{
+.card-text p {
   font-weight: 400 !important;
-
 }
-.row a{
-  
+.row a {
   text-decoration: none !important;
-  
 }
-.card-img-overlay{
-  opacity: 0 !important; 
-
+.card-img-overlay {
+  opacity: 0 !important;
 }
-.card-img-overlay:hover{
+.card-img-overlay:hover {
   opacity: 0.2 !important;
   background-color: white;
 }
 
+/* Map */
+
+#map {
+  height: 400px;
+  width: 56vw;
+ 
+}
