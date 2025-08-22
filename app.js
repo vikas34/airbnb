@@ -81,6 +81,13 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use((req, res, next) => {
+  res.removeHeader("Content-Security-Policy"); // remove platform default
+  next();
+});
+
+
+
 // ✅ Helmet CSP (security)
 app.use(
   helmet.contentSecurityPolicy({
@@ -89,7 +96,6 @@ app.use(
       scriptSrc: ["'self'", "https://cdn.jsdelivr.net", "https://unpkg.com"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       styleSrcElem: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      styleSrcAttr: ["'self'", "'unsafe-inline'"], // ✅ allow inline styles in attributes
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: [
         "'self'",
@@ -104,6 +110,7 @@ app.use(
     },
   })
 );
+
 
 
 // ✅ Flash + User globals (available in all templates)
