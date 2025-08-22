@@ -71,14 +71,6 @@ const sessionOptions = {
     httpOnly: true,
   },
 };
-app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'none'; img-src 'self' https://airbnb-66em.onrender.com; style-src 'self'; script-src 'self';"
-  );
-  next();
-});
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -96,11 +88,17 @@ app.use(
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "https://cdn.jsdelivr.net", "https://unpkg.com"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      imgSrc: ["'self'", "data:", "https:"], // allow favicon + external images
+      imgSrc: [
+        "'self'",
+        "data:",
+        "blob:",
+        "https://res.cloudinary.com", // allow Cloudinary images
+        "https://images.unsplash.com", // if you fetch Unsplash
+      ],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       connectSrc: ["'self'"],
       objectSrc: ["'none'"],
-      upgradeInsecureRequests: [],
+      upgradeInsecureRequests: [], // auto upgrade http→https
     },
   })
 );
