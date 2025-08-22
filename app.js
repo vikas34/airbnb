@@ -93,9 +93,11 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "https://cdn.jsdelivr.net", "https://unpkg.com"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      styleSrcElem: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      // ✅ Add Mapbox to script sources
+      scriptSrc: ["'self'", "https://cdn.jsdelivr.net", "https://unpkg.com", "https://api.mapbox.com"],
+      // ✅ Add Mapbox to style sources
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdn.jsdelivr.net", "https://cdnjs.cloudflare.com", "https://api.mapbox.com"],
+      styleSrcElem: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdn.jsdelivr.net", "https://cdnjs.cloudflare.com", "https://api.mapbox.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: [
         "'self'",
@@ -104,7 +106,8 @@ app.use(
         "https://res.cloudinary.com",
         "https://images.unsplash.com",
       ],
-      connectSrc: ["'self'"],
+      // ✅ Add Mapbox to connect sources
+      connectSrc: ["'self'", "https://api.mapbox.com"], 
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
     },
