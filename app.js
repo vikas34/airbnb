@@ -71,6 +71,14 @@ const sessionOptions = {
     httpOnly: true,
   },
 };
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'none'; img-src 'self' https://airbnb-66em.onrender.com; style-src 'self'; script-src 'self';"
+  );
+  next();
+});
+
 app.use(session(sessionOptions));
 app.use(flash());
 
