@@ -1,7 +1,37 @@
+<style>
+  .btn-search{
+    background-color: #FE585F;
+    color: white;
+   
+  }
+
+  .btn-search:hover{
+    background-color:#fff ;
+    color: #FE585F;
+    border: 1px solid #FE585F;
+   
+  }
+  .search{
+    border-radius: 25px;
+    width: 300px;
+  }
+  .btn-search {
+ 
+   border-radius: 25px;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   font-size: 14px;
+   padding: 4px 20px;
+   
+  }
+</style>
+
+
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"
-      ><img src="/logo.png" style="width: 50px; height: 60px"
+    <a class="navbar-brand" href="/listings"
+      ><img src="/logo.png" style="width: 100%; height: 80px"
     /></a>
     <button
       class="navbar-toggler fs-6"
@@ -13,13 +43,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav fw-semibold">
-        <a class="nav-link" href="/listings">Home</a>
-        <a class="nav-link" href="/listings">All Listings</a>
-        <a class="nav-link" href="/listings/new"
-          ><i class="fa-solid fa-square-plus"></i>Listing</a
-        >
+        <a class="nav-link" href="/listings">Expolre</a>
       </div>
-      <div class="navbar-nav fw-semibold ms-auto">
+
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2 search"
+            type="search"
+            placeholder="Search  Destination"
+            aria-label="Search"
+          />
+
+          <button class="btn btn-search " type="submit"> <i class="fa-solid fa-magnifying-glass "></i> Search</button>
+        </form>
+      </div>
+      <div class="navbar-nav fw-semibold ms-auto ">
+        <a class="nav-link" href="/listings/new"> AirBnB Your Home</a>
         <% if(!currUser){%>
         <a class="nav-link" href="/signup">Signup</a>
         <a class="nav-link" href="/login">Login</a>
