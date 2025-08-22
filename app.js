@@ -88,20 +88,23 @@ app.use(
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "https://cdn.jsdelivr.net", "https://unpkg.com"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      styleSrcElem: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      styleSrcAttr: ["'self'", "'unsafe-inline'"], // ✅ allow inline styles in attributes
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: [
         "'self'",
         "data:",
         "blob:",
-        "https://res.cloudinary.com", // allow Cloudinary images
-        "https://images.unsplash.com", // if you fetch Unsplash
+        "https://res.cloudinary.com",
+        "https://images.unsplash.com",
       ],
-      fontSrc: ["'self'", "https://fonts.gstatic.com"],
       connectSrc: ["'self'"],
       objectSrc: ["'none'"],
-      upgradeInsecureRequests: [], // auto upgrade http→https
+      upgradeInsecureRequests: [],
     },
   })
 );
+
 
 // ✅ Flash + User globals (available in all templates)
 app.use((req, res, next) => {
